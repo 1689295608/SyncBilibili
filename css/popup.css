@@ -1,0 +1,146 @@
+html, body {
+    margin: 0;
+    width: 400px;
+    height: 350px;
+}
+
+.main-box {
+    position: absolute;
+    inset: 0;
+    /* border: 1px solid #777777; */
+    background: #f2f2f2;
+}
+
+.group-info {
+    width: auto;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+#group-id {
+    padding-left: 10px;
+    font-size: 0.8em;
+    color: #555;
+}
+
+#group-name {
+    font-weight: bold;
+}
+
+.message-list {
+    height: calc(100% - 150px);
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+}
+
+.input-box {
+    height: calc(150px - 52px);
+    border-top: 1px solid #d7d7d7;
+    padding: 10px;
+}
+
+.input-box label {
+    display: none;
+}
+
+textarea {
+    width: 100%;
+    box-sizing: border-box;
+    height: 100%;
+    outline: none;
+    border: none;
+    resize: none;
+    font-size: 14px;
+    font-family: "ÃƒÆ’Ã‚Â¥Ãƒâ€šÃ‚Â¾Ãƒâ€šÃ‚Â®ÃƒÆ’Ã‚Â¨Ãƒâ€šÃ‚Â½Ãƒâ€šÃ‚Â¯ÃƒÆ’Ã‚Â©ÃƒÂ¢Ã¢â€šÂ¬Ã‚ÂºÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã‚Â©Ãƒâ€šÃ‚Â»ÃƒÂ¢Ã¢â€šÂ¬Ã‹Å“", auto, monospace;
+    background: #f2f2f2;
+}
+
+.button {
+    display: inline-flex;
+    width: 70px;
+    height: 25px;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #0037ff;
+    border-radius: 5px;
+    background: #2e5bff;
+    color: white;
+    font-size: 0.95em;
+    user-select: none;
+    transition: .1s;
+}
+
+.input-box .button {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+}
+
+.button:active {
+    background: #033aff;
+}
+
+.message-box {
+    width: auto;
+    margin: 3px 10px;
+    display: inline-flex;
+    flex-direction: column;
+}
+
+.message-box .nickname {
+    font-size: 12px;
+    color: #5e5e5e;
+    margin-bottom: 2px;
+    user-select: none;
+}
+
+.message-box .message {
+    background: #fff;
+    color: #1e1e1e;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: .1s;
+    width: fit-content;
+    max-width: 80%;
+}
+
+.message-box .message:hover {
+    background: #e0e0e0;
+}
+
+.message-box.self {
+    float: right;
+    text-align: right;
+    align-items: flex-end;
+}
+
+.message-box.info .message {
+    margin: auto;
+}
+
+.message-box.self .message {
+    background: #0099ff;
+    color: white;
+}
+
+.message-box.self .message:hover {
+    background: #0086e0;
+}
+
+#message-clone {
+    display: none;
+}
+
+.group-info .button {
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

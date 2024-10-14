@@ -1,0 +1,38 @@
+{
+  "manifest_version": 3,
+  "name": "SyncBilibili",
+  "version": "0.0.1",
+  "description": "用于同步 Bilibili 的视频",
+  "icons": {
+    "16": "img/icon.ico",
+    "48": "img/icon.ico",
+    "128": "img/icon.ico"
+  },
+  "background": {
+    "service_worker": "service_worker.js"
+  },
+  "action": {
+    "default_icon": "img/icon.ico",
+    "default_title": "SyncBilibili",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://bilibili.com/*", "https://www.bilibili.com/*"],
+      "js": ["js/main.js"],
+      "css": ["css/main.css"],
+      "run_at": "document_end"
+    }
+  ],
+  "host_permissions": [
+    "https://bilibili.com/*",
+    "https://www.bilibili.com/*"
+  ],
+  "permissions": [
+    "storage",
+    "webRequest",
+    "scripting",
+    "tabs"
+  ],
+  "homepage_url": "https://nekow.work/?req=syncbilibili"
+}
