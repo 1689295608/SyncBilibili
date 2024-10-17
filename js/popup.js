@@ -6,8 +6,10 @@ const MessageType = {
     VIDEO_PAUSE: 4,
     VIDEO_PLAY: 5,
     VIDEO_SEEKED: 6,
-    VIDEO_SWITCH: 7
+    VIDEO_SWITCH_VIDEO: 7,
+    VIDEO_SWITCH_BANGUMI: 8
 }
+
 const id = (i) => {
     return document.getElementById(i);
 };
@@ -45,12 +47,16 @@ function message(message, sender, mode) {
             case MessageType.VIDEO_SEEKED:
                 msg.innerText = `${sender} 将视频跳转到了 ${Math.round(message)}s`
                 break
-            case MessageType.VIDEO_SWITCH:
+            case MessageType.VIDEO_SWITCH_VIDEO:
                 msg.innerText = `${sender} 更换了视频为 ${message}`
+                break
+            case MessageType.VIDEO_SWITCH_BANGUMI:
+                msg.innerText = `${sender} 更换了番剧为 ${message}`
                 break
         }
     }
     msgList.appendChild(clone);
+    clone.scrollIntoView()
 }
 function clear_message() {
     msgList.innerHTML = "";
@@ -94,7 +100,7 @@ id("create-btn").addEventListener("click", () => {
 })
 
 id("join-btn").addEventListener("click", () => {
-    let [gid, key] = sharp_prompt("请输入要创建的组ID和加入密钥，以 # 分隔: ", "10001#example_key", "请输入正确格式！")
+    let [gid, key] = sharp_prompt("请输入要加入的组ID和加入密钥，以 # 分隔: ", "10001#example_key", "请输入正确格式！")
     if (!gid) return
     chrome.runtime.sendMessage({action: "join", group_id: gid * 1, password: key}).then(r => {
         if (r.action !== "ok") {
@@ -114,6 +120,12 @@ id("join-btn").addEventListener("click", () => {
         groupId.innerText = gid
         clear_message()
     })
+})
+id("input").addEventListener("keydown", e => {
+    if (e.ctrlKey && e.key === "Enter") {
+        id("send-btn").click()
+        e.preventDefault()
+    }
 })
 function load() {
     chrome.runtime.sendMessage({action: "load"}).then(s => {
