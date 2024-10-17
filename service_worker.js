@@ -1,3 +1,24 @@
+const MessageType = {
+    SELF_MESSAGE: 0,
+    MEMBER_MESSAGE: 1,
+    MEMBER_LEAVE: 2,
+    MEMBER_JOIN: 3,
+    VIDEO_PAUSE: 4,
+    VIDEO_PLAY: 5,
+    VIDEO_SEEKED: 6,
+    VIDEO_SWITCH_VIDEO: 7,
+    VIDEO_SWITCH_BANGUMI: 8
+}
+class Message {
+    message; sender; timestamp; mode;
+    constructor(message, sender, mode) {
+        this.message = message;
+        this.sender = sender;
+        this.timestamp = Date.now();
+        this.mode = mode;
+    }
+}
+
 let ws
 let retry = 0
 function connect() {
@@ -52,25 +73,6 @@ function connect() {
 }
 connect()
 
-class Message {
-    message; sender; timestamp; mode;
-    constructor(message, sender, mode) {
-        this.message = message;
-        this.sender = sender;
-        this.timestamp = Date.now();
-        this.mode = mode;
-    }
-}
-const MessageType = {
-    SELF_MESSAGE: 0,
-    MEMBER_MESSAGE: 1,
-    MEMBER_LEAVE: 2,
-    MEMBER_JOIN: 3,
-    VIDEO_PAUSE: 4,
-    VIDEO_PLAY: 5,
-    VIDEO_JUMP: 6,
-    VIDEO_SWITCH: 7
-}
 const messages = []
 const handlers = []
 let username, session, group, group_id, watching
@@ -186,8 +188,6 @@ async function listener(request, _) {
             }
             message(request.data, username, request.type, {self: true})
             return r
-        case "active":
-            return {action: "ok"}
         case "create":
             r = await sendJson({mode: "create", session: session, group_name: request.name, password: request.password})
             if (r.action === "ok") {
