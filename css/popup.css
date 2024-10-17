@@ -32,14 +32,15 @@ html, body {
 }
 
 .message-list {
-    height: calc(100% - 150px);
+    height: calc(100% - 120px);
     display: flex;
     flex-direction: column;
     overflow-y: auto;
+    scroll-behavior: smooth;
 }
 
 .input-box {
-    height: calc(150px - 52px);
+    height: calc(150px - 82px);
     border-top: 1px solid #d7d7d7;
     padding: 10px;
 }
@@ -56,7 +57,7 @@ textarea {
     border: none;
     resize: none;
     font-size: 14px;
-    font-family: "ÃƒÆ’Ã‚Â¥Ãƒâ€šÃ‚Â¾Ãƒâ€šÃ‚Â®ÃƒÆ’Ã‚Â¨Ãƒâ€šÃ‚Â½Ãƒâ€šÃ‚Â¯ÃƒÆ’Ã‚Â©ÃƒÂ¢Ã¢â€šÂ¬Ã‚ÂºÃƒÂ¢Ã¢â€šÂ¬Ã‚Â¦ÃƒÆ’Ã‚Â©Ãƒâ€šÃ‚Â»ÃƒÂ¢Ã¢â€šÂ¬Ã‹Å“", auto, monospace;
+    font-family: "ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¥ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¾ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â®ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â¨ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â½ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â¯ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚ÂºÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€šÃ‚Â¦ÃƒÆ’Ã†â€™Ãƒâ€šÃ‚Â©ÃƒÆ’Ã¢â‚¬Å¡Ãƒâ€šÃ‚Â»ÃƒÆ’Ã‚Â¢ÃƒÂ¢Ã¢â‚¬Å¡Ã‚Â¬Ãƒâ€¹Ã…â€œ", auto, monospace;
     background: #f2f2f2;
 }
 
@@ -143,4 +144,8 @@ textarea {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.message-list .message-box:last-child {
+    margin-bottom: 15px;
 }
